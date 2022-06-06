@@ -1,0 +1,23 @@
+
+public class AmcTicket {
+
+	public static void main(String[] args) {
+		int timeHour = 3;
+		int timeMinute = 20;
+		int dateMonth = 04;
+		int dateDay = 15;
+		int dateYear = 2022;
+		int location = 10;
+		double admissionPrice = 12.75;
+		String title = "A Star is Born Encore";
+		String AmPm = "PM";
+		String rating = "PG-13";
+		
+		System.out.println ("                                        AMC Universal CityWalk");
+		System.out.println ("                                              Presenting");
+		System.out.println ("                                     " + title);
+		
+		
+	}
+
+}

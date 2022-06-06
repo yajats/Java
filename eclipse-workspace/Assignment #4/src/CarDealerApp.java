@@ -1,0 +1,328 @@
+//============================================================================
+// File Name   : CarDealerApp.java
+// Author      : Yajat Sharma
+// Copyright   : None
+// Description : This program is just a menu for a car dealership 
+
+// Revision History:
+// Date              Version         Author             Comment
+// 05-23-22          1.0           Yajat Sharma       
+//============================================================================
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Random;
+
+public class CarDealerApp {
+
+    private static BufferedReader reader = new BufferedReader (new InputStreamReader (System.in));
+
+
+    public static void  main ( String [] args ) {
+    	
+    	final int arraySize = 16;
+    	
+    	String [] makeModels = null;
+    	int [] years = null;
+    	double [] prices = null;
+    	
+    	makeModels = new String [arraySize];
+    	years = new int [arraySize];
+    	prices = new double [arraySize];
+    	
+    	loadVehicleInventory(makeModels, years, prices);
+    	boolean inMenu = true;
+    	
+    	do {
+    		menu();
+    		
+    		int userChoice = getUserChoice();
+    		
+    		
+    		switch(userChoice) {
+    			case 1: 
+    				viewInventory(makeModels, years, prices);
+    				break;
+    			
+    			case 2:
+    				
+    				searchByMakeModel(makeModels, years, prices);
+    				break;
+    				
+    			case 3:
+    				
+    				smartSearch(makeModels, years, prices);
+    				break;
+    			
+    			case 4:
+    				
+    				quit();
+    				inMenu = false;
+    				break;
+    				
+    			default:
+    				
+    				invalidUserChoice();
+    				break;
+    		}
+    		
+    	} while (inMenu);
+    	
+    	
+   
+   }
+
+   public static int getUserChoice() {
+
+	   String choice = null;
+		try {
+			choice = reader.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+        return Integer.parseInt(choice);
+
+   }
+   
+   public static void loadVehicleInventory(String [] makeModels, int [] years, double [] prices){
+
+       String makeModel= "";
+
+       int year = 0;
+
+       double price = 0.0;
+
+       int randomNumber = 0;
+
+       double LO = 0.0;
+
+       double HI = 0.0;
+
+     
+
+      System.out.println ( "\t\tWelcome to Foothill Dealership\n" + "\tLoading vehicles from Inventory. Please wait ...\n\n");
+
+
+
+      try {
+	        Thread.sleep (3000);   // sleep for 3 seconds.
+	    }
+	    catch (Exception e ) {
+	         e.printStackTrace ( );   
+	    }
+
+
+
+       Random generator = new Random();   
+
+      
+
+       for (int i = 0; i < makeModels.length; i++){
+
+              randomNumber = generator.nextInt(4);
+
+              switch (randomNumber){
+              
+              	case 0:
+              		makeModel = "Ford Taurus";
+              		LO = 9000;
+              		HI = 27000;
+              		break; 
+              		
+              	case 1: 
+              		makeModel = "Toyota Camry";
+              		LO = 12000;
+              		HI = 30000;
+              		break;
+              	
+              	case 2:
+              		makeModel = "BMW 335i";
+              		LO = 39500;
+              		HI = 53500;
+              		break;
+              	
+              	case 3:
+              		makeModel = "Rolls-Royce Phantom";
+              		LO = 40000;
+              		HI = 99999;
+              		break;
+              						
+              }
+
+
+            price = LO + generator.nextDouble ( ) * ( HI - LO );
+            int randYear = generator.nextInt(7);
+            year = randYear + 2010;
+                            
+            makeModels[i] = makeModel;
+            years[i] = year;
+            prices[i] = price;
+            
+
+                      
+
+       }
+}
+   
+   public static void viewInventory (String [] makeModels, int [] years, double [] prices) {
+	   
+	   System.out.println(" 	--------------------------------------------");
+	   System.out.println("");
+	   System.out.println("  	|              VEHICLE INVENTORY           |");
+	   System.out.println("");
+	   System.out.println("  	--------------------------------------------");
+	   
+	   for (int i = 0; i < makeModels.length; i++) {
+			
+		   	System.out.printf("%25s", makeModels[i]);	
+			System.out.print(" ");
+			System.out.print(" ");
+			System.out.print("  " + years[i]);
+			System.out.print(" ");
+			System.out.print(" ");
+			System.out.println("  " + prices[i]);
+			
+		
+   }
+ }
+   
+   public static void menu () {
+	   
+		System.out.println("");
+		System.out.println("             SMART CAR INQUIRY");
+		System.out.println("1. View Vehicle Inventory ");
+		System.out.println("2. Search by make and model");
+		System.out.println("3. Smart Search");
+		System.out.println("4. Quit");
+		System.out.println("");
+		System.out.print("Enter your choice (1, 2, 3, or 4): ");
+   }
+   
+   public static void quit ( ) {
+	   
+	   System.out.println("");
+	   System.out.println("Thank you for working with the Foothill Dealership!");
+	   System.out.println("");
+	   System.out.println("Goodbye!");
+	   
+       try {
+		reader.close();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+   }
+   
+   public static void invalidUserChoice() {
+
+	   System.out.println("");
+	   System.out.println("Invalid choice, please choose between 1, 2, 3 and 4");
+	   System.out.println("");
+
+   }
+   
+   public static void searchByMakeModel(String [] makeModels, int [] years, double [] prices) {
+	   
+	   System.out.println("Enter make and model: ");
+	  
+	   
+	   String carChoice = null;
+		try {
+			carChoice = reader.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		boolean init = false;
+		
+		for (int i = 0; i < makeModels.length; i++) {
+			if (makeModels[i].equalsIgnoreCase(carChoice)) {
+				System.out.print(" ");
+				System.out.printf("%25s", makeModels[i]);	
+				System.out.print(" ");
+				System.out.print(" ");
+				System.out.print("  " + years[i]);
+				System.out.print(" ");
+				System.out.print(" ");
+				System.out.println("  " + prices[i]);
+				init = true;
+				
+			}
+		} 
+		
+		if (!init) {
+			System.out.println("");
+			System.out.println("Make/model " + carChoice + " not found in the inventory");
+			System.out.print("Please check back later.");
+			System.out.println("");
+		}
+   }
+   
+   public static void smartSearch(String [] makeModels, int [] years, double [] prices) {
+	   
+	   System.out.println("Enter make and model: ");
+	  
+	   String makeChoice = null;
+	   
+		try {
+			makeChoice = reader.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		System.out.println("Enter year: ");
+		
+		int yearChoice = 0;
+		   
+		try {
+			yearChoice = Integer.parseInt(reader.readLine());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		System.out.println("Enter maximum price: ");
+		
+		int priceChoice = 0;
+		   
+		try {
+			priceChoice = Integer.parseInt(reader.readLine());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		boolean inArr = false;
+		
+		for (int i = 0; i < makeModels.length; i++) {
+			if (makeModels[i].equalsIgnoreCase(makeChoice)) {
+				if (years[i] == yearChoice) {
+					if (prices[i] <= priceChoice) {
+						
+						System.out.print(" ");
+						System.out.printf("%25s", makeModels[i]);	
+						System.out.print(" ");
+						System.out.print(" ");
+						System.out.print("  " + years[i]);
+						System.out.print(" ");
+						System.out.print(" ");
+						System.out.println("  " + prices[i]);
+						inArr = true;
+						
+					}
+				}
+								
+			}
+		} 
+		
+		if (!inArr) {
+			System.out.println("");
+			System.out.println("Make/model: " + makeChoice + ", year: " + yearChoice + ", maximum price: " + priceChoice + ", not found in the inventory");
+			System.out.print("Please check back later.");
+			System.out.println("");
+		}
+	   
+   }
+   
+}

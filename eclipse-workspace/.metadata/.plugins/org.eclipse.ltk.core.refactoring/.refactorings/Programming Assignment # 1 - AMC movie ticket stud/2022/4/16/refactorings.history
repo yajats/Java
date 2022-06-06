@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;AmcTicket.java&apos; to &apos;AmcTicket.java&apos;&#x0D;&#x0A;- Original project: &apos;Programming Assignment # 1 - AMC movie ticket stud&apos;&#x0D;&#x0A;- Destination element: &apos;AmcTicket.java&apos;&#x0D;&#x0A;- Original element: &apos;AmcTicket.java&apos;" description="Copy compilation unit" destination="/src&lt;{AmcTicket.java" element1="/src&lt;{AmcTicket.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1649993810754" units="1" version="1.0"/>
+</session>

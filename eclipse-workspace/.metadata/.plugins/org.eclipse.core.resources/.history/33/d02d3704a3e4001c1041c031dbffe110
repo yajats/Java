@@ -1,0 +1,46 @@
+
+public class ScheduleOfClasses {
+
+	public static void main(String[] args) {
+		
+		String [] courseList = null;
+    	
+		final int courseArraySize = 12;
+		
+		courseList = new String [courseArraySize];
+		
+		buildScheduleOfClasses(courseList);
+		
+		viewScheduleOfClasses(courseList);
+		
+		viewCourseSections(courseList);
+	}
+
+	public static void buildScheduleOfClasses (String [] courseList) {
+		
+		String [] courseTitleList = {"CS 1A", "CS 2B", "CS 1B",        };
+		String [] sectionList = {"2W", "1Y", "3Z",        };
+		int    [] CRNList = {32671, 31001, 33982,        };
+		double [] unitsList = {4.5, 4.5, 5.0,         };
+		int [] capacityList = {40, 50, 30,        };
+		String [] instructorList = {"Pham", "Lankester", "Mazloom",        };
+		
+		
+		public ScheduleOfClasses() {
+			
+		}
+		
+		for (int i = 0; i < courseList.length; i++) {
+			if (i % 2 == 0) {
+				
+				courseList [i] = null;
+				
+					
+				
+				courseList [i].setTitle(courseTitleList[i]);
+				}
+			}
+		}
+	
+	}
+}

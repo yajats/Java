@@ -1,0 +1,28 @@
+
+public class BookReader {
+
+	public static void main(String[] args) {
+	
+		System.out.println(readPages(6, 300));
+		
+	}
+	
+	public static int readPages(int pageStart, int pageRead) {
+		int pages = 0;
+		if (pageStart < 1 || pageRead < 1) {
+			return 0;
+		}
+		else {
+			while (pageStart < pageRead) {
+				System.out.println("Reading page <" + pageStart + ">");
+				pageStart++;
+				pages++;
+			}
+			System.out.println("Done Reading");
+		}
+		return pages;
+		
+		
+	}
+
+}

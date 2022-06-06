@@ -1,0 +1,9 @@
+
+public class testingAssignment5 {
+	int capacity = 30;
+	
+	public boolean isFull() {
+		return (capacity <= 0);
+	}
+
+}

@@ -1,0 +1,127 @@
+
+public class ScheduleOfClasses {
+
+	public static void main(String[] args) {
+		
+		Course [] courseList = null;
+    	
+		final int courseArraySize = 12;
+		
+		courseList = new Course[courseArraySize];
+		
+		buildScheduleOfClasses(courseList);
+		
+		viewScheduleOfClasses(courseList);
+		
+		//viewCourseSections(courseList);
+	}
+
+	public static void buildScheduleOfClasses (Course [] courseList) {
+		
+		String [] courseTitleList = {"CS 1A", "CS 2B", "CS 1B", "CS 2A", "CS 3A", "CS 4A", "CS 5A", "CS 6A", "CS 7A", "CS 8A", "CS 9A", "CS 10A"};
+		String [] sectionList = {"2W", "1Y", "3Z", "4Z", "5Z", "6Z", "7Z", "8Z", "9Z", "10Z", "11Z", "12Z"};
+		int    [] CRNList = {32671, 31001, 33982, 368482, 783634, 845634, 846376, 895644, 956743, 235653, 587534, 834636};
+		double [] unitsList = {4.5, 4.5, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0};
+		int    [] capacityList = {40, 50, 30, 60, 70, 80, 90, 100, 110, 120, 130, 140};
+		String [] instructorList = {"Pham", "Lankester", "Mazloom", "Jacob", "Daniels", "Mazerlev", "Zelt", "Martinez", "Lin", "Kaur", "Sheth", "Goulet"};
+		
+		
+		for (int i = 0; i < courseList.length; i++) {
+			if (i % 2 == 0) {
+				courseList[i] = new Course();
+				courseList[i].setTitle(courseTitleList[i]);
+				courseList[i].setSection(sectionList[i]);
+				courseList[i].setCRN(CRNList[i]);
+				courseList[i].setUnits(unitsList[i]);
+				courseList[i].setCapacity(capacityList[i]);
+				courseList[i].setInstructor(instructorList[i]);
+				}
+			else {
+				courseList[i] = new Course(courseTitleList[i],  CRNList[i], sectionList[i], unitsList[i], capacityList[i], instructorList[i]);
+			}
+			
+		}
+	
+	}
+	
+	public static void viewScheduleOfClasses(Course [] courseList) {
+		
+		for (Course course : courseList) {
+			System.out.println(course.getTitle());
+		}
+	}
+	
+}
+
+
+class Course {
+	
+	private String title;
+	private int CRN;
+	private String section;
+	private double units;
+	private int capacity;
+	private String instructor;
+	
+	public Course() {
+		 title = "TBD";
+		 CRN = 0;
+		 section = "0A";
+		 units = 4.0;
+		 capacity = 30;
+		 instructor = "Staff";
+	}
+	
+	public Course(String title, int CRN, String section, double units, int capacity, String instructor) {
+		
+		this.title = title;
+		this.CRN = CRN;
+		this.section = section;
+		this.units = units;
+		this.capacity = capacity;
+		this.instructor = instructor;
+	}
+	
+	public String getTitle() {return title;}
+	public void setTitle(String newTitle) {title = newTitle;}
+	
+	public int getCRN() {return CRN;}
+	public void setCRN(int newCRN) {CRN = newCRN;}
+	
+	public String getSection() {return section;}
+	public void setSection(String newSection) {section = newSection;}
+	
+	public double getUnits() {return units;}
+	public void setUnits(double newUnits) {units = newUnits;}
+	
+	public int getCapacity() {return capacity;}
+	public void setCapacity(int newCapacity) {capacity = newCapacity;}
+	
+	public String getInstructor() {return instructor;}
+	public void setInstructor(String newInstructor) {instructor = newInstructor;}
+	
+	public boolean enroll() {
+		if (capacity > 0) {
+			capacity -= 1;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean isFull() {
+		return (capacity <= 0);
+	}
+	
+	public String toString(Course [] courseList) {
+		String info = "";
+		for (Course course : courseList) {
+			info = course.getTitle();
+			
+		
+		}
+		return info;
+	}
+	
+}

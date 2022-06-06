@@ -1,0 +1,12 @@
+
+public class testingAssignment5 {
+	public static void main(String[] args){
+		
+		int capacity = 0;
+		System.out.println(capacity <= 0);
+		
+	   }
+	
+}
+	
+
