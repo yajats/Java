@@ -79,8 +79,7 @@ public class ScheduleOfCourses {
 		
 		do {
 			
-			boolean itExists = false;
-			boolean inList = true;
+			boolean inList = false;
 			
 			System.out.println("Enter a course title: ");
 			String choice = null;
@@ -120,18 +119,13 @@ public class ScheduleOfCourses {
 					System.out.println("");
 					
 					inList = true;
-					itExists = true;
 					
 					
 				}
-				else {
-					inList = false;
-				}
-				
 				
 			}
 			
-			if (!inList && !itExists) {
+			if (!inList) {
 				
 				System.out.println("");
 				System.out.println("Sorry, " + choice + " course is not offered in this quarter!");
