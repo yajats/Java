@@ -29,7 +29,7 @@ public class FoothillFruitMarket {
 class Fruit{
 	private String fruitName;
 	private double weightAvailable;
-	private double pricePerLb;
+	private double pricePerLb; 
 	
 	public static final String DEFAULT_FRUIT = "?";
 	public static final double DEFAULT_WEIGHT = 0.0;
